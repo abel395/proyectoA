@@ -17,16 +17,13 @@ export class CSeccion2Component implements OnInit {
   });
   //esta forma no funciona del todo
   */
-  formReactivo:FormGroup = new FormGroup ( {
-    usuario: new FormControl('', Validators.required),
-    comentarios: new FormControl('',  [Validators.required, Validators.minLength(10)])
-  });
-
-  get f(){
-    return this.formReactivo.controls;
-  }
+  formReactivo:FormGroup;
 
   constructor(private route:ActivatedRoute, private formulario: FormBuilder) { 
+      this.formReactivo = this.formulario.group({
+        usuario: ['',[Validators.required]],
+        comentarios:['',[Validators.required, Validators.minLength(10)]]
+      });
   }
   //si quisieramos hacer accesible desde el html el route deberia ser publico
 
@@ -39,6 +36,10 @@ export class CSeccion2Component implements OnInit {
       }
     });
     
+  }
+
+  get f(){
+    return this.formReactivo.controls;
   }
 
   ngDoCheck(): void {

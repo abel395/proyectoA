@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HijoPrComponent } from './hijo-pr/hijo-pr.component';
 import { CSeccion2Component } from './c-seccion2/c-seccion2.component';
 import { CSeccion3Component } from './c-seccion3/c-seccion3.component';
+import { ProductosService } from './servicio/productos.service';
 
 const routes: Routes= [
   {path:'', component: CSeccion2Component},
@@ -37,8 +38,9 @@ const routes: Routes= [
     FormsModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule
+    
   ],
-  providers: [FormBuilder],
+  providers: [FormBuilder, ProductosService],
   bootstrap: [PrincipalComponent]
 })
 export class AppModule { }
